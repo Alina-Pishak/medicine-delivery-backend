@@ -9,7 +9,7 @@ const getDrugs = async (req, res) => {
     shop: {},
     sort: {},
   };
-  if (shop) {
+  if (shop && shop !== "All") {
     searchConditions.shop = { shop };
   }
   if (sort) {
