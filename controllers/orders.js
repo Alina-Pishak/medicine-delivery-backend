@@ -3,8 +3,7 @@ const { Order } = require("../models/order");
 
 const createOrder = (req, res) => {
   const { name, phone, email, address, order } = req.body;
-  const createdOrder = Order.create({ name, phone, email, address, order });
-  console.log(createdOrder);
+  Order.create({ name, phone, email, address, order });
   res.json({ user: { name, phone, email, address }, order });
 };
 
