@@ -14,7 +14,9 @@ const getDrugs = async (req, res) => {
   }
   if (sort) {
     searchConditions.sort = {
-      price: (sort === "cheap" && 1) || (sort === "expensive" && -1),
+      price:
+        (sort === "price-low-to-high" && 1) ||
+        (sort === "price-high-to-low" && -1),
     };
   }
   const allDrugs = await Drug.find(searchConditions.shop).sort(
