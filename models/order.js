@@ -11,7 +11,7 @@ const orderSchema = new Schema(
     phone: { type: Number, required: [true, "Phone is required"] },
     address: { type: String, required: [true, "Address is required"] },
     order: {
-      type: Object,
+      type: Array,
       required: [true, "Order is required"],
     },
   },

@@ -11,10 +11,10 @@ const bodySchema = Joi.object({
     "any.required": "missing required phone field",
   }),
   address: Joi.string().required().messages({
-    "any.required": "missing required favorite field",
+    "any.required": "missing required address field",
   }),
-  order: Joi.object().required().messages({
-    "any.required": "missing required email field",
+  order: Joi.array().required().messages({
+    "any.required": "missing required order field",
   }),
 });
 
