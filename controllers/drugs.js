@@ -1,5 +1,7 @@
-const { ctrlWrapper } = require("../helpers");
+const { ctrlWrapper, HttpError } = require("../helpers");
 const { Drug } = require("../models/drug");
+const fs = require("fs");
+const path = require("path");
 
 const getDrugs = async (req, res) => {
   const { shop, sort } = req.query;
@@ -21,6 +23,17 @@ const getDrugs = async (req, res) => {
   res.json(allDrugs);
 };
 
+const getMedicineShops = (req, res) => {
+  const medicineShopsPath = path.join(__dirname, "../data/shops.json");
+  const medicineShopsBuffer = fs.readFileSync(medicineShopsPath);
+  const medicineShops = JSON.parse(medicineShopsBuffer);
+  if (!medicineShops) {
+    throw HttpError(404, "Not found");
+  }
+  res.json(medicineShops);
+};
+
 module.exports = {
   getDrugs: ctrlWrapper(getDrugs),
+  getMedicineShops: ctrlWrapper(getMedicineShops),
 };

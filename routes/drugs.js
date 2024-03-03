@@ -5,4 +5,6 @@ const router = express.Router();
 
 router.get("/", drugs.getDrugs);
 
+router.get("/shops", drugs.getMedicineShops);
+
 module.exports = router;
